@@ -1,0 +1,16 @@
+
+// USING ARRAY 
+
+class Solution {
+public:
+    vector<int> findDuplicates(vector<int>& nums) {
+        vector<int>arr(99999,-1);
+        vector<int>ans;
+        for(auto i:nums){
+            if(arr[i]!=-1) ans.push_back(i);
+            else arr[i]=0;
+        }
+
+        return ans;
+    }
+};
