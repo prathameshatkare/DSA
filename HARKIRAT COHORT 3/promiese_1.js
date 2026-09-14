@@ -1,15 +1,40 @@
-function random(resolve){
-// console.log("hello")
-resolve()
+// function random(resolve){
+// // console.log("hello")
+// resolve()
+// }
+
+// let p =  new Promise(random)
+
+
+// function callback(){
+//     console.log("Promise completed")
+// }
+// // console.log(p)
+
+
+// p.then(callback)
+
+const fs =  require("fs")
+
+function readthefile(resolve, reject) {
+  fs.readFile("a.txt", "utf-8", function (err, data) {
+    if (err) {
+      reject(err);
+      return;
+    }
+
+    resolve(data);
+  });
 }
 
-let p =  new Promise(random)
-
-
-function callback(){
-    console.log("Promise completed")
+function readFile(fileName) {
+  return new Promise(readthefile);
 }
-// console.log(p)
 
+const p = readFile("a.txt");
 
-p.then(callback)
+function callback(contents) {
+  console.log(contents);
+}
+
+p.then(callback);
