@@ -82,3 +82,27 @@ function need(value) {
 
 setPromisfied().then(need).then(main).then(console.log);
     
+
+
+
+
+function random(resolve,reject) {
+    
+    resolve(()=>{
+        console.log("Promise completed")
+    })
+    reject(()=>{
+        console.log("Promise completed")
+    })
+}
+
+const p = new Promise(random);
+
+p.then(() => console.log("Its done bro")).catch(()=>{
+    console.log("Error")
+});
+
+// console.log(p);
+
+
+
