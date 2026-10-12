@@ -38,3 +38,47 @@ function callback(contents) {
 }
 
 p.then(callback);
+
+
+
+function setpromisecallback(f) {
+  setTimeout(f, 3000);
+  console.log("Bacche promise call ho gaya");
+  for (i = 0; i < 10; i++) {
+    console.log(i);
+  }
+}
+
+function setPromisfied() {
+  return new Promise(setpromisecallback);
+}
+
+function main() {
+  console.log("Hey main is called");
+}
+
+setPromisfied().then(main);
+
+
+
+function setpromisecallback(resolve, reject) {
+  console.log("Hi");
+  resolve(2);
+}
+
+function setPromisfied() {
+  return new Promise(setpromisecallback);
+}
+
+function main(value) {
+  console.log("main:", value);
+  return 2;
+}
+
+function need(value) {
+  console.log("need:", value);
+  return 2;
+}
+
+setPromisfied().then(need).then(main).then(console.log);
+    
