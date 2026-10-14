@@ -51,3 +51,5 @@ function callback() {
 }
 
 p.then(callback)
+
+//promises
