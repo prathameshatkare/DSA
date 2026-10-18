@@ -33,7 +33,7 @@ console.log(map.get({ id: 1 }));
 
 
 
-let map = new Map();
+let map1 = new Map();
 
 map.set("c", 30);
 map.set("a", 10);
