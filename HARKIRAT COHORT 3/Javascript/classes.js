@@ -31,7 +31,7 @@ class Pokemon{
     constructor(type , name , level){
         this.type = type ,
         this.name = name ,
-        this.level = level 
+        this.level = level
     }
 
     voice(){
@@ -50,14 +50,31 @@ const pikachu = new Pokemon("Electric", "Pikachu" , 13)
 
 console.log(v)
 
-
 const now = new Date()
 console.log(now.getDate())
 console.log(now.getFullYear())
 console.log(now.getDay())
 console.log(now.getSeconds())
 
-
 const map  =  new Map()
 map.set('name','Kirat')
 console.log(map.get('name'))
+
+class Car {
+  constructor(brand, color) {
+    this.brand = brand;
+    this.color = color;
+  }
+  start() {
+    console.log(
+      `This is the car of Brand ${this.brand} and color of the car is ${this.color}`,
+    );
+  }
+}
+
+const car1 = new Car();
+const car2 = new Car("Toyota", "White");
+
+car1.start("BMW", "Black");
+car2.start();
+
