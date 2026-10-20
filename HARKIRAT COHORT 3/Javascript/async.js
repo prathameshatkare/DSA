@@ -11,7 +11,7 @@ setTimeout(() => {
 // console.log("Third");
 async function getUserData() {
   try {
-    console.log("I entered")
+    console.log("I entered");
     const userResponse = await fetch(
       "https://jsonplaceholder.typicode.com/users/1",
     );
@@ -24,12 +24,12 @@ async function getUserData() {
       "https://jsonplaceholder.typicode.com/posts?userId=${user.id}`",
     );
 
-    console.log(post.json())
+    console.log(post.json());
 
     const post2 = await fetch(
       "https://jsonplaceholder.typicode.com/comments?postId=${posts[0].id}",
     );
-    console.log(post2.json())
+    console.log(post2.json());
     // // Callback Hell starts here
     // setTimeout(() => {
     //   fetch(`https://jsonplaceholder.typicode.com/posts?userId=${user.id}`)
@@ -188,24 +188,24 @@ promise
     console.log("function done");
   });
 
-  Promise.resolve(10)
-    .then((number) => {
-      console.log(number);
-      return number * 2;
-    })
-    .then((result) => {
-      console.log(result);
-      return result + 5;
-    })
-    .then((finalResult) => {
-      console.log(finalResult);
-    })
-    .catch((error) => {
-      console.log("Error:", error);
-    })
-    .finally(() => {
-      console.log();
-    });
+Promise.resolve(10)
+  .then((number) => {
+    console.log(number);
+    return number * 2;
+  })
+  .then((result) => {
+    console.log(result);
+    return result + 5;
+  })
+  .then((finalResult) => {
+    console.log(finalResult);
+  })
+  .catch((error) => {
+    console.log("Error:", error);
+  })
+  .finally(() => {
+    console.log();
+  });
 
 Promise.reject(err)
   .then((res) => {
@@ -221,11 +221,9 @@ Promise.reject(err)
   })
   .catch((err) => {
     console.log("Here is teh error :", err);
-
   });
 
 async function getData() {
-
   try {
     const response = await fetch(
       "https://jsonplaceholder.typicode.com/users/2",
@@ -240,14 +238,12 @@ async function getData() {
     console.log("User:", user.name);
   } catch (error) {
     console.log("Error:", error.message);
-  }
-  finally{
-    console.log("Function is done !!!!")
+  } finally {
+    console.log("Function is done !!!!");
   }
 }
 
 getData();
-
 
 fetch("https://jsonplaceholder.typicode.com/users/1")
   .then((response) => response.json())
@@ -257,3 +253,126 @@ fetch("https://jsonplaceholder.typicode.com/users/1")
   .catch((error) => {
     console.log(error);
   });
+
+fetch("https://jsonplaceholder.typicode.com/users/1")
+  .then((response) => response.json())
+  .then((user) => {
+    return user.name;
+    console.log(user.name);
+  })
+  .then((name1) => {
+    console.log("Here is name : ", name1);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+
+async function getUserData() {
+  try {
+    const response = await fetch(
+      "https://jsonplaceholder.typicode.com/users/1",
+    );
+
+    const user = await response.json();
+
+    console.log(user.name);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+getUserData();
+
+async function getdata() {
+  try {
+    const data = await fetch("https://jsonplaceholder.typicode.com/users/1");
+
+    if (!data.ok) {
+      console.log("Failed to fetch user!!!");
+    }
+    const response = await data.json();
+
+    console.log(
+      response.phone,
+      ":",
+      response.name,
+      ":",
+      response.username,
+      ":",
+      response.email,
+    );
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+getdata();
+
+async function demo() {
+  console.log("1. Start");
+
+  const result = await Promise.resolve("Success");
+
+  console.log("2.", result);
+
+  console.log("3. End");
+}
+
+demo();
+
+const timerId = setTimeout(() => {
+  console.log("This will not execute");
+}, 3000);
+
+clearTimeout(timerId);
+
+console.log("Timer cancelled");
+
+const timerId1 = setInterval(() => {
+  console.log("This will not execute");
+}, 1000);
+
+clearInterval(timerId1);
+
+console.log("Timer cancelled");
+
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+const xhr = new XMLHttpRequest();
+
+xhr.open("GET", "https://jsonplaceholder.typicode.com/users/1");
+
+xhr.onload = function () {
+  if (xhr.status >= 200 && xhr.status < 300) {
+    const user = JSON.parse(xhr.responseText);
+
+    console.log("User:", user.name);
+  } else {
+    console.log("HTTP error:", xhr.status);
+  }
+};
+
+xhr.onerror = function () {
+  console.log("Network error occurred");
+};
+
+xhr.send();
+async function getData() {
+  try {
+    const response = await fetch(
+      "https://isitdownstatus.com/api/v1/status/github",
+    );
+
+    if (!response.ok) {
+      throw new Error(`HTTP Error: ${response.status} ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error("Here is error:", error.message);
+  } finally {
+    console.log("finish");
+  }
+}
+
+getData();
