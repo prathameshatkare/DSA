@@ -1,116 +1,116 @@
-// // //console.log("First");
-// // //console.log("Second");
-// // //console.log("Third");
+console.log("First");
+console.log("Second");
+console.log("Third");
 
-// // console.log("First");
+console.log("First");
 
-// // setTimeout(() => {
-// //   console.log("Second");
-// // }, 2000);
+setTimeout(() => {
+  console.log("Second");
+}, 2000);
 
-// // // console.log("Third");
-// // async function getUserData() {
-// //   try {
-// //     console.log("I entered")
-// //     const userResponse = await fetch(
-// //       "https://jsonplaceholder.typicode.com/users/1",
-// //     );
+// console.log("Third");
+async function getUserData() {
+  try {
+    console.log("I entered")
+    const userResponse = await fetch(
+      "https://jsonplaceholder.typicode.com/users/1",
+    );
 
-// //     const user = await userResponse.json();
+    const user = await userResponse.json();
 
-// //     console.log("User:", user.name);
+    console.log("User:", user.name);
 
-// //     const post = await fetch(
-// //       "https://jsonplaceholder.typicode.com/posts?userId=${user.id}`",
-// //     );
+    const post = await fetch(
+      "https://jsonplaceholder.typicode.com/posts?userId=${user.id}`",
+    );
 
-// //     console.log(post.json())
+    console.log(post.json())
 
-// //     const post2 = await fetch(
-// //       "https://jsonplaceholder.typicode.com/comments?postId=${posts[0].id}",
-// //     );
-// //     console.log(post2.json())
-// //     // // Callback Hell starts here
-// //     // setTimeout(() => {
-// //     //   fetch(`https://jsonplaceholder.typicode.com/posts?userId=${user.id}`)
-// //     //     .then((response) => response.json())
-// //     //     .then((posts) => {
-// //     //       console.log("Posts:", posts);
+    const post2 = await fetch(
+      "https://jsonplaceholder.typicode.com/comments?postId=${posts[0].id}",
+    );
+    console.log(post2.json())
+    // // Callback Hell starts here
+    // setTimeout(() => {
+    //   fetch(`https://jsonplaceholder.typicode.com/posts?userId=${user.id}`)
+    //     .then((response) => response.json())
+    //     .then((posts) => {
+    //       console.log("Posts:", posts);
 
-// //     //       setTimeout(() => {
-// //     //         fetch(
-// //     //           `https://jsonplaceholder.typicode.com/comments?postId=${posts[0].id}`,
-// //     //         )
-// //     //           .then((response) => response.json())
-// //     //           .then((comments) => {
-// //     //             console.log("Comments:", comments);
-// //     //           })
-// //     //           .catch((error) => console.log(error));
-// //     //       }, 1000);
-// //     //     })
-// //     //     .catch((error) => console.log(error));
-// //     // }, 1000);
+    //       setTimeout(() => {
+    //         fetch(
+    //           `https://jsonplaceholder.typicode.com/comments?postId=${posts[0].id}`,
+    //         )
+    //           .then((response) => response.json())
+    //           .then((comments) => {
+    //             console.log("Comments:", comments);
+    //           })
+    //           .catch((error) => console.log(error));
+    //       }, 1000);
+    //     })
+    //     .catch((error) => console.log(error));
+    // }, 1000);
 
-// //     // Callback Hell ends here
-// //   } catch (error) {
-// //     console.log("Error:", error);
-// //   }
-// // }
+    // Callback Hell ends here
+  } catch (error) {
+    console.log("Error:", error);
+  }
+}
 
-// // getUserData();
+getUserData();
 
-// async function getUserData() {
-//   try {
-//     console.log("I entered");
+async function getUserData() {
+  try {
+    console.log("I entered");
 
-//     // Step 1: Fetch user data
-//     const userResponse = await fetch(
-//       "https://jsonplaceholder.typicode.com/users/1",
-//     );
+    // Step 1: Fetch user data
+    const userResponse = await fetch(
+      "https://jsonplaceholder.typicode.com/users/1",
+    );
 
-//     if (!userResponse.ok) {
-//       throw new Error("Failed to fetch user");
-//     }
+    if (!userResponse.ok) {
+      throw new Error("Failed to fetch user");
+    }
 
-//     const user = await userResponse.json();
+    const user = await userResponse.json();
 
-//     console.log("User:", user.name);
+    console.log("User:", user.name);
 
-//     // Step 2: Fetch posts belonging to the user
-//     const postResponse = await fetch(
-//       `https://jsonplaceholder.typicode.com/posts?userId=${user.id}`,
-//     );
+    // Step 2: Fetch posts belonging to the user
+    const postResponse = await fetch(
+      `https://jsonplaceholder.typicode.com/posts?userId=${user.id}`,
+    );
 
-//     if (!postResponse.ok) {
-//       throw new Error("Failed to fetch posts");
-//     }
+    if (!postResponse.ok) {
+      throw new Error("Failed to fetch posts");
+    }
 
-//     const posts = await postResponse.json();
+    const posts = await postResponse.json();
 
-//     console.log("Posts:", posts);
+    console.log("Posts:", posts);
 
-//     // Step 3: Fetch comments for the first post
-//     if (posts.length > 0) {
-//       const commentResponse = await fetch(
-//         `https://jsonplaceholder.typicode.com/comments?postId=${posts[0].id}`,
-//       );
+    // Step 3: Fetch comments for the first post
+    if (posts.length > 0) {
+      const commentResponse = await fetch(
+        `https://jsonplaceholder.typicode.com/comments?postId=${posts[0].id}`,
+      );
 
-//       if (!commentResponse.ok) {
-//         throw new Error("Failed to fetch comments");
-//       }
+      if (!commentResponse.ok) {
+        throw new Error("Failed to fetch comments");
+      }
 
-//       const comments = await commentResponse.json();
+      const comments = await commentResponse.json();
 
-//       console.log("Comments:", comments);
-//     } else {
-//       console.log("No posts found");
-//     }
-//   } catch (error) {
-//     console.log("Error:", error.message);
-//   }
-// }
+      console.log("Comments:", comments);
+    } else {
+      console.log("No posts found");
+    }
+  } catch (error) {
+    console.log("Error:", error.message);
+  }
+}
 
-// getUserData();
+getUserData();
 
 function greet(name) {
   console.log("Hello, " + name);
@@ -188,7 +188,6 @@ promise
     console.log("function done");
   });
 
-
   Promise.resolve(10)
     .then((number) => {
       console.log(number);
@@ -208,7 +207,6 @@ promise
       console.log();
     });
 
-    
 Promise.reject(err)
   .then((res) => {
     console.log(res);
@@ -223,4 +221,39 @@ Promise.reject(err)
   })
   .catch((err) => {
     console.log("Here is teh error :", err);
+
+  });
+
+async function getData() {
+
+  try {
+    const response = await fetch(
+      "https://jsonplaceholder.typicode.com/users/2",
+    );
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch user");
+    }
+
+    const user = await response.json();
+
+    console.log("User:", user.name);
+  } catch (error) {
+    console.log("Error:", error.message);
+  }
+  finally{
+    console.log("Function is done !!!!")
+  }
+}
+
+getData();
+
+
+fetch("https://jsonplaceholder.typicode.com/users/1")
+  .then((response) => response.json())
+  .then((user) => {
+    console.log(user.name);
+  })
+  .catch((error) => {
+    console.log(error);
   });
