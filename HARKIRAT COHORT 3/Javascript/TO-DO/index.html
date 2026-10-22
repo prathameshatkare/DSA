@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MY TO-DO List</title>
+  </head>
+  <body>
+    <div>
+      <h1>MY TO DO LIST</h1>
+    </div>
+    <div>
+      <input type="text" placeholder="Enter Your task....." id="taskInput" />
+      <button id="addbtn">Add Task</button>
+    </div>
+    <ul id="taskList"></ul>
+  </body>
+  <script>
+    let input = document.getElementById("taskInput");
+    let addbutton = document.getElementById("addbtn");
+    addbutton.addEventListener("click", () => {
+      let task = input.value;
+      task = task.trim();
+      if (task !== "") {
+        const newTodo = document.createElement("li");
+        newTodo.textContent = task;
+        const parentList = document.getElementById("taskList");
+        let childvalue = parentList.appendChild(newTodo);
+        input.value = "";
+        let delete_button = document.createElement("button");
+        let complet_button = document.createElement("button");
+        delete_button.textContent = "Delete";
+        complet_button.textContent = "Completed";
+        childvalue.appendChild(delete_button);
+        childvalue.appendChild(complet_button);
+        localStorage.setItem("Tasks", JSON.stringify(["Learn JavaScript", "Practice DOM"]));
+
+        delete_button.addEventListener("click", () => {
+          childvalue.remove();
+        });
+
+        complet_button.addEventListener("click", () => {
+          //
+          if (newTodo.style.textDecoration == "") {
+            newTodo.style.textDecoration = "line-through";
+          } else {
+            newTodo.style.textDecoration = "";
+          }
+        });
+      }
+    });
+  </script>
+</html>
