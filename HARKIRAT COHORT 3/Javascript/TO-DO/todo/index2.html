@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Todo List</h1>
+    <h4>1.take out classes</h4>
+    <h4>2.Go out To eat</h4>
+    <div>
+      <input type="text" />
+      <button onclick="Addtodo()">ADD Todo</button>
+    </div>
+  </body>
+  <script>
+    
+    function Addtodo() {
+      const inputEl = document.querySelector("input");
+      const value = inputEl.value;
+      if(value==""){
+        return
+      }
+
+      const newDicEl = document.createElement("div");
+      newDicEl.innerHTML = value+"<button onclick='1'>delete button</button>";
+      function deleteme(){
+        newDicEl.innerHTML = ''
+
+      }
+      // newDicEl.innerHTML = 
+      document.querySelector("body").appendChild(newDicEl);
+      inputEl.value = "";
+    }
+  </script>
+</html>
