@@ -1,37 +1,77 @@
+```html
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Todo List</title>
   </head>
+
   <body>
     <h1>Todo List</h1>
-    <h4>1.take out classes</h4>
-    <h4>2.Go out To eat</h4>
+
     <div>
       <input type="text" />
       <button onclick="Addtodo()">ADD Todo</button>
+      <button onclick="deleteLastTodo()">Delete Last Todo</button>
+      <button onclick="deleteFirstTodo()">Delete First Todo</button>
+
+      <div id="todo"></div>
     </div>
+
+    <script>
+      let todos = [];
+
+      function Addtodo() {
+        const input = document.querySelector("input");
+        const title = input.value.trim();
+
+        if (title === "") {
+          return;
+        }
+
+        todos.push({
+          title: title,
+        });
+
+        input.value = "";
+        render();
+      }
+
+      function deleteLastTodo() {
+        todos.splice(todos.length - 1, 1);
+        render();
+      }
+
+      function deleteFirstTodo() {
+        todos.splice(0, 1);
+        render();
+      }
+
+      function render() {
+        document.querySelector("#todo").innerHTML = "";
+
+        for (let i = 0; i < todos.length; i++) {
+          const todo = todos[i];
+
+          const dev = document.createElement("div");
+          const h1 = document.createElement("h1");
+          const button = document.createElement("button");
+
+          button.textContent = "Delete";
+          h1.textContent = todo.title;
+
+          button.onclick = function () {
+            todos.splice(i, 1);
+            render();
+          };
+
+          dev.append(h1);
+          dev.append(button);
+
+          document.querySelector("#todo").appendChild(dev);
+        }
+      }
+    </script>
   </body>
-  <script>
-    
-    function Addtodo() {
-      const inputEl = document.querySelector("input");
-      const value = inputEl.value;
-      if(value==""){
-        return
-      }
-
-      const newDicEl = document.createElement("div");
-      newDicEl.innerHTML = value+"<button onclick='1'>delete button</button>";
-      function deleteme(){
-        newDicEl.innerHTML = ''
-
-      }
-      // newDicEl.innerHTML = 
-      document.querySelector("body").appendChild(newDicEl);
-      inputEl.value = "";
-    }
-  </script>
 </html>
