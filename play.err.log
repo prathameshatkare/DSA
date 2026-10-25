@@ -1,0 +1,4 @@
+page.waitForTimeout: Target page, context or browser has been closed
+    at C:\Users\ASUS\AppData\Local\Temp\opencode\pwt\play.js:51:14 {
+  log: []
+}
