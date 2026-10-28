@@ -42,6 +42,24 @@ app.post('/addk',(req,res)=>{
     })
 
 })
+app.put("/updatek",(req,res)=>{
+    for(let i =0;i<users[0].kedneys.length;i++){
+    users[0].kedneys[i].healthy =true
+    }
+    res.json({
+        msg:"done"
+    })
+
+})
+
+app.delete('/delete',(req,res)=>{
+
+    const onlyhelthykdneys = users[0].kedneys.filter((kedneys)=>kedneys.healthy == true)
+    res.send(onlyhelthykdneys)
+
+
+
+})
 app.listen(3000, () => {
   console.log("Server is running!!");
 });
