@@ -1,0 +1,9 @@
+# Ignore a specific file (like your environment configurations)
+.env
+
+# Ignore an entire folder (like node_modules or build folders)
+node_modules/
+dist/
+
+# Ignore all files ending with a specific extension (like log files)
+*.log
