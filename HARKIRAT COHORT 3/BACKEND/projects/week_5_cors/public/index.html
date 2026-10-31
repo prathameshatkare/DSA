@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/axios@1.20.0/dist/axios.min.js"></script>
+<script>
+    async function myfunc(){
+        const a = document.getElementById("a").value
+        const b = document.getElementById("b").value
+        const response = await axios.post("http://localhost:3000/add",{
+            a:a,
+            b:b
+        })
+        console.log(response.data)
+    }
+</script>
+<body>
+    
+        <input id="a" type="text" placeholder="first number"></div>
+        <input id ="b" type="text" placeholder="second number"></input>
+        <button onclick="myfunc()">Submit</button>
+    
+</body>
+</html>
