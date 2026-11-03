@@ -1,8 +1,11 @@
 const express = require("express");
-
+const dotenv = require("dotenv");
+const jwt = require("jsonwebtoken");
 const app = express();
 
 app.use(express.json());
+dotenv.config();
+
 let users = [];
 
 function generateToken() {
@@ -52,6 +55,7 @@ function generateToken() {
   return token;
 }
 
+
 app.post("/signup", (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
@@ -87,6 +91,29 @@ app.post("/signin", (req, res) => {
     res.json({
       msg: "Please signup first!!!!",
     });
+  }
+});
+
+
+
+app.get("/me", (req, res) => {
+  const token = req.header("token");
+  let founduser = null;
+
+  for (let i = 0; i < users.length; i++) {
+    if (users[i].token == token) {
+      founduser = users[i];
+    }
+  }
+  if(founduser){
+    res.json({
+      username : founduser.username ,
+      password : founduser.password
+    })
+  }else{
+    res.json({
+      msg:"Invalid token "
+    })
   }
 });
 app.listen(3000, () => {
