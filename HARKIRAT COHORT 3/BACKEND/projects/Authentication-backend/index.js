@@ -1,121 +1,125 @@
 const express = require("express");
-const dotenv = require("dotenv");
-const jwt = require("jsonwebtoken");
 const app = express();
+const jwt = require("jsonwebtoken");
+
+const JWT_SECRET = "RANDOM";
 
 app.use(express.json());
-dotenv.config();
 
 let users = [];
 
-function generateToken() {
-  const characters = [
-    "a",
-    "b",
-    "c",
-    "d",
-    "e",
-    "f",
-    "g",
-    "h",
-    "i",
-    "j",
-    "k",
-    "l",
-    "m",
-    "n",
-    "o",
-    "p",
-    "q",
-    "r",
-    "s",
-    "t",
-    "u",
-    "v",
-    "w",
-    "x",
-    "y",
-    "z",
-    "0",
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-  ];
-
-  let token = "";
-  for (let i = 0; i < 32; i++) {
-    token += characters[Math.floor(Math.random() * characters.length)];
-  }
-  return token;
-}
-
+// ==========================
+// SIGNUP ROUTE
+// ==========================
 
 app.post("/signup", (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
-  //   if(users.find(u=>u.username === username)){
-  //     res.json({
-  //         msg:"you are already signup"
-  //     })
-  //   }
 
+  // Check if user already exists
+  const existingUser = users.find((u) => {
+    return u.username === username;
+  });
+
+  if (existingUser) {
+    return res.json({
+      msg: "You are already signed up",
+    });
+  }
+
+  // Store user
   users.push({
     username: username,
     password: password,
   });
+
   res.json({
-    msg: "hey you are sign",
+    msg: "Hey, you are signed up!",
   });
 });
+
+// ==========================
+// SIGNIN ROUTE
+// ==========================
 
 app.post("/signin", (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
 
-  const userfound = users.find((u) => {
+  // Find user
+  const founduser = users.find((u) => {
     return u.username === username && u.password === password;
   });
-  if (userfound) {
-    const token = generateToken();
-    userfound.token = token;
+
+  if (founduser) {
+    // Generate JWT token
+    const token = jwt.sign(
+      {
+        username: username,
+      },
+      JWT_SECRET,
+    );
+
+    // Store token inside existing user
+    founduser.token = token;
+
     res.json({
-      message: token,
+      token: token,
     });
   } else {
-    res.json({
-      msg: "Please signup first!!!!",
+    res.status(401).json({
+      msg: "Invalid username or password",
     });
   }
 });
 
-
+// ==========================
+// ME ROUTE
+// ==========================
 
 app.get("/me", (req, res) => {
-  const token = req.header("token");
-  let founduser = null;
+  // Get token from header
+  const token = req.headers.token;
 
-  for (let i = 0; i < users.length; i++) {
-    if (users[i].token == token) {
-      founduser = users[i];
-    }
+  if (!token) {
+    return res.status(401).json({
+      msg: "Token is missing",
+    });
   }
-  if(founduser){
-    res.json({
-      username : founduser.username ,
-      password : founduser.password
-    })
-  }else{
-    res.json({
-      msg:"Invalid token "
-    })
+
+  try {
+    // Verify JWT token
+    const decodedinfo = jwt.verify(token, JWT_SECRET);
+
+    // Get username from decoded token
+    const username = decodedinfo.username;
+
+    // Find user in users array
+    const founduser = users.find((u) => {
+      return u.username === username;
+    });
+
+    if (founduser) {
+      return res.json({
+        username: founduser.username,
+        password : founduser.password
+      });
+    } else {
+      return res.status(404).json({
+        msg: "User not found",
+      });
+    }
+  } catch (err) {
+    return res.status(401).json({
+      msg: "Invalid token",
+    });
   }
 });
+
+// ==========================
+// START SERVER
+// ==========================
+
 app.listen(3000, () => {
-  console.log("Server is on");
+  console.log("Server is running on port 3000");
 });
