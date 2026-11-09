@@ -4,7 +4,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 let todo = [];
-console.log(todo);
+console.log(todo)
 
 app.get("/", (req, res) => {
   res.send("Hi there");
