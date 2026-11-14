@@ -1,0 +1,84 @@
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: rgb(89, 116, 139);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  width: 400px;
+  height: 500px;
+  background-color: white;
+  border-radius: 50px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.profilepic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: rgb(40, 149, 212);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.name {
+  color: black;
+  margin-bottom: 0px;
+}
+
+.mydiv {
+  margin-top: 10px;
+}
+.profilepic i {
+  font-size: 45px;
+  color: rgb(17, 16, 16);
+}
+.role {
+  opacity: 50%;
+  color: rgb(14, 17, 17);
+}
+.quote {
+  text-align: center;
+  margin: 8px 20px;
+  line-height: 1.5;
+}
+.heading-container {
+  display: flex;
+  gap: 10px;
+}
+.html {
+  color: rgb(44, 7, 228);
+  background-color: aqua;
+  border-radius: 10px;
+  padding: 8px 12px;
+}
+.css {
+  color: greenyellow;
+  background-color: aquamarine;
+  border-radius: 10px;
+  padding: 8px 12px
+}
+.js {
+  color: blueviolet;
+  background-color: rgb(166, 108, 220);
+  border-radius: 10px;
+  padding: 8px 12px;
+}
+.button {
+  background-color: blue;
+  color: aliceblue;
+  margin-top: 50px;
+  height: 50px;
+  width: 300px;
+  border-radius: 12px;
+  cursor: pointer;
+}
