@@ -1,69 +1,217 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+* {
+  font-family: "Inter", sans-serif;
+  box-sizing: border-box;
+}
+
 body {
   margin-left: 200px;
   margin-right: 200px;
-  margin-top: 0px;
-  
+  margin-top: 0;
 }
+
 .flipkart_page {
   background-color: white;
-  height: 1000px;
-  border: 10px;
+  min-height: 1000px;
+  border: 10px solid transparent;
 }
-.navbar{
-    /* background-color:rgb(114, 13, 13); */
-    height: 50px;
+
+/* Navbar */
+
+.navbar {
+  height: 50px;
+  border-radius: 10px;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.f_logo {
+  background-color: #f8d706;
+  height: 40px;
+  border-radius: 10px;
+  width: 100px;
+  background-image: url("./images/flipkar.png");
+  background-size: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.f_logo:hover {
+  cursor: pointer;
+}
+
+.t_logo {
+  background-color: rgb(94, 87, 87);
+  height: 40px;
+  border-radius: 10px;
+  width: 100px;
+  background-image: url("./images/travel.png");
+  background-size: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 50%;
+}
+
+.t_logo:hover {
+  cursor: pointer;
+}
+
+.m_logo {
+  background-color: rgb(94, 87, 87);
+  height: 40px;
+  border-radius: 10px;
+  width: 100px;
+  background-image: url("./images/image.png");
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 50%;
+}
+
+.m_logo:hover {
+  cursor: pointer;
+}
+
+/* Location */
+
+.p_nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.location_nav {
+  height: 40px;
+  width: 200px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.info {
+  margin-right: auto;
+}
+
+.info h4 {
+  width: 100%;
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* Search section */
+
+.main_search {
+  height: 50px;
+  border-bottom: solid grey 1px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.searchbox {
+  border: solid skyblue 2px;
+  height: 40px;
+  width: 800px;
+  border-radius: 5px;
+  padding-left: 12px;
+  outline: none;
+  flex: 1;
+  min-width: 0;
+}
+
+/* Icons */
+
+.icons {
+  margin-right: 0;
+  width: 30%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.login_pfp {
+  width: 100px;
+  height: 40px;
+  margin-left: 10px;
+  background-image: url("./images/user-interface.png");
+  background-size: 30%;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.login_pfp:hover {
+  cursor: pointer;
+}
+
+.cart_pfp {
+  width: 100px;
+  height: 40px;
+  margin-left: 10px;
+  background-image: url("./images/shopping-cart.png");
+  background-size: 30%;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Services */
+
+.services {
+  display: flex;
+  height: 60px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.s_logo {
+  width: 70px;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-bottom: 5px solid transparent;
+}
+
+.s_logo:hover {
+  border-bottom: 5px solid blue;
+}
+
+.s_logo img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+.flip1{
+     height: 250px;
+  width: 350px;;
     border-radius: 10px;
-    margin-top: 5px;
-    display: flex;
-    gap:10px;
 }
-.f_logo{
-    background-color: #F8D706 ;
-    height: 40px;
-    border-radius: 10px;
-    width: 100px;
-    background-image: url("./images/flipkar.png");
-    background-size: 50%;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-.f_logo:hover{
-    cursor: pointer;
-}
-.t_logo{
-    background-color: rgb(94, 87, 87) ;
-    height: 40px;
-    border-radius: 10px;
-    width: 100px;
-    background-image: url("./images/travel.png");
-    background-size: 50%;
-    background-position: center;
-    background-repeat: no-repeat;
-    opacity: 50%;
-}
-.t_logo:hover{
-    cursor: pointer;
-}
-.location_nav{
-    /* background-color: blue; */
-    height: 40px;
-    width: 200px;
+.flip2{
+    height: 250px;
+    width: 350px;;
     border-radius: 10px;
 }
-.p_nav{
+.flip3{
+     height: 250px;
+    width: 350px;;
+    border-radius: 10px;
+}
+.add{
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    
-}
-.left_nav{
-    
-    /* background-color: chocolate; */
-    
-}
-.info{
-    display: in;
-}
-.info h4{
-    width: 50%;
 }
